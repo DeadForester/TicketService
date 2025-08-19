@@ -1,0 +1,21 @@
+app:
+  db-url: postgresql://postgres:5432/${POSTGRES_DB}
+  db-username: ${DB_Username}
+  db-password: ${DB_Password}
+
+spring:
+  r2dbc:
+    url: r2dbc:${app.db-url}
+    username: ${app.db-username}
+    password: ${app.db-password}
+  flyway:
+    enabled: true
+    url: jdbc:${app.db-url}
+    user: ${app.db-username}
+    password: ${app.db-password}
+
+jwt:
+  access-secret: accessSecretKey
+  refresh-secret: refreshSecretKey
+  access-expiration-ms: 900000
+  refresh-expiration-ms: 604800000
